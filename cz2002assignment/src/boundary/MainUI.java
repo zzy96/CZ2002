@@ -2,9 +2,6 @@ package boundary;
 
 import java.util.Scanner;
 
-import control.AdminController;
-import control.MovieGoerController;
-
 public class MainUI {
 
 	public static void main(String[] args) throws Exception {
@@ -22,10 +19,10 @@ public class MainUI {
 			switch (sel) {
 			case 1:
 				input.nextLine();
-				AdminController.checkLogin();
+				AdminUI.checkLogin();
 				break;
 			case 2:
-				MovieGoerController.movieGoerChooseLogin();
+				MovieGoerUI.movieGoerChooseLogin();
 				break;
 			default:
 				break;

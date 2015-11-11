@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import boundary.ChooseMovie;
+import control.ChooseMovie;
 
 public class MovieGoer implements Serializable {
 	private String name;

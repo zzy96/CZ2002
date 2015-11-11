@@ -1,4 +1,4 @@
-package boundary;
+package control;
 
 import java.io.FileInputStream;
 import java.io.FileOutputStream;

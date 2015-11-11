@@ -7,33 +7,12 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import boundary.ChooseMovie;
+import boundary.MovieGoerUI;
 import entity.Movie;
 import entity.MovieGoer;
 
 public class MovieGoerController {
-
-	private static Scanner input = new Scanner(System.in);
-
-	public static void movieGoerChooseLogin() throws Exception {
-		System.out.println("1. Existing movie goer");
-		System.out.println("2. New movie goer");
-		System.out.println("3. Quit");
-		switch (input.nextInt()) {
-		case 1:
-			input.nextLine();
-			movieGoerLogin();
-			break;
-		case 2:
-			input.nextLine();
-			movieGoerRegistration();
-			break;
-		default:
-			break;
-		}
-	}
-
-	private static void movieGoerRegistration() throws Exception {
+	public static void movieGoerRegistration() throws Exception {
 
 		boolean loop = true;
 		MovieGoer goer;
@@ -67,10 +46,11 @@ public class MovieGoerController {
 				System.out.println("User already exist!");
 			}
 		} while (loop);
-		movieGoerMain(goer);
+		MovieGoerUI.movieGoerMain(goer);
 	}
 
-	private static void movieGoerLogin() throws Exception {
+	public static void movieGoerLogin() throws Exception {
+		Scanner input = new Scanner(System.in);
 		System.out.println("input name:");
 		String name = input.nextLine();
 		MovieGoer check;
@@ -80,60 +60,12 @@ public class MovieGoerController {
 		for (int i = 0; i < num; i++) {
 			check = (MovieGoer) objectInputStream.readObject();
 			if (check.getName().equals(name)) {
-				movieGoerMain(check);
+				MovieGoerUI.movieGoerMain(check);
 				break;
 			}
 		}
 		System.out.println("User doesn't exist!");
 		objectInputStream.close();
-
-	}
-
-	private static void movieGoerMain(MovieGoer goer) throws Exception {
-
-		boolean loop = true;
-		while (loop) {
-			System.out.println("Movie-goer Option:");
-			System.out.println("1. List all movies");
-			System.out.println("2. View movie details");
-			System.out.println("3. Buy a ticket");
-			System.out.println("4. View my booking history");
-			System.out.println("5. Add review on a movie");
-			System.out.println("6. View my reviewing history");
-			System.out.println("7. List the Top 5 ranking");
-			System.out.println("8. Exit");
-			int option = input.nextInt();
-			if (option == 8)
-				break;
-			switch (option) {
-			case 1:
-				ChooseMovie.listMovie();
-				break;
-			case 2:
-				ChooseMovie.chooseMovie().printInfo();
-				break;
-			case 3:
-				buyTicket();
-				break;
-			case 4:
-
-				break;
-			case 5:
-				goer.makeReview();
-				updateMovieGoer(goer);
-				break;
-			case 6:
-				goer.showReview();
-				break;
-			case 7:
-				listTopMovie();
-				break;
-			case 8:
-				loop = false;
-			default:
-				break;
-			}
-		}
 
 	}
 
@@ -160,7 +92,7 @@ public class MovieGoerController {
 		objectOutputStream.close();
 	}
 
-	private static void listTopMovie() throws Exception {
+	public static void listTopMovie() throws Exception {
 		ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("database/Movie"));
 		int num = objectInputStream.readInt();
 		Movie movies[] = new Movie[num];
@@ -192,9 +124,8 @@ public class MovieGoerController {
 		System.out.println("");
 	}
 
-	private static void buyTicket() {
+	public static void buyTicket() {
 		// TODO Auto-generated method stub
 
 	}
-
 }

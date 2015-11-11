@@ -3,7 +3,7 @@ package entity;
 import java.io.Serializable;
 import java.util.Scanner;
 
-import boundary.ChooseMovie;
+import control.ChooseMovie;
 import control.TicketPriceController;
 
 public class ShowingTime implements Serializable {
