@@ -68,9 +68,8 @@ public class MovieGoerController {
 		objectInputStream.close();
 	}
 
-
 	private static void movieGoerMain(MovieGoer goer) throws Exception {
-
+		Scanner input = new Scanner(System.in);
 		boolean loop = true;
 		while (loop) {
 			System.out.println("Movie-goer Option:");
@@ -96,7 +95,7 @@ public class MovieGoerController {
 				buyTicket();
 				break;
 			case 4:
-					
+
 				break;
 			case 5:
 				goer.makeReview();
@@ -174,6 +173,6 @@ public class MovieGoerController {
 
 	public static void buyTicket() {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
