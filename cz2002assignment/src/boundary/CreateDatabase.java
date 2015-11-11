@@ -7,7 +7,7 @@ public class CreateDatabase {
 
 	public static void main(String[] args) throws Exception {
 
-		FileOutputStream fos = new FileOutputStream("database/MovieGoer");
+		FileOutputStream fos = new FileOutputStream("database/Cinema");
 		ObjectOutputStream oos = new ObjectOutputStream(fos);
 		oos.writeInt(0);
 		oos.close();
