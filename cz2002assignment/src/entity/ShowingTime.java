@@ -47,21 +47,15 @@ public class ShowingTime implements Serializable {
 		return this.time;
 	}
 
-	public Ticket[] getTicket(boolean available) {
-		int size = ticket.length;
-		Ticket[] checkTicket = new Ticket[size * size];
-		int index = 0;
-		for (int i = 0; i < size; i++) {
-			for (int j = 0; j < size; j++) {
-				if (ticket[i][j].getBooked() != available) {
-					checkTicket[index] = ticket[i][j];
-					index++;
-				}
-
-			}
+	public Ticket getTicket(int i , int j) {
+		try{
+		return ticket[i][j];
+		}catch(Exception e){
+			throw new IndexOutOfBoundsException("Index " + (i-1) + " is out of bounds!");
 		}
-		return checkTicket;
+		
 	}
+	
 
 	public String toString() {
 		return "MOVIE:" + movie.getTitle() + " DATE: " + date + " TIME: " + time;
@@ -74,7 +68,7 @@ public class ShowingTime implements Serializable {
 		for (int k = 0; k < size; k++)
 			System.out.print(k + " ");
 		System.out.println();
-
+		
 		for (int i = 0; i < size; i++) {
 			System.out.print(i + " ");
 			for (int j = 0; j < size; j++) {

@@ -7,10 +7,9 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import boundary.MovieGoerUI;
-import entity.Movie;
-import entity.MovieGoer;
 
+import boundary.MovieGoerUI;
+import entity.*;
 public class MovieGoerController {
 	public static void movieGoerRegistration() throws Exception {
 
@@ -70,7 +69,7 @@ public class MovieGoerController {
 
 
 	private static void movieGoerMain(MovieGoer goer) throws Exception {
-
+		Scanner input = new Scanner(System.in);
 		boolean loop = true;
 		while (loop) {
 			System.out.println("Movie-goer Option:");
@@ -93,7 +92,7 @@ public class MovieGoerController {
 				ChooseMovie.chooseMovie().printInfo();
 				break;
 			case 3:
-				buyTicket();
+				buyTicket(goer);
 				break;
 			case 4:
 					
@@ -172,8 +171,25 @@ public class MovieGoerController {
 		System.out.println("");
 	}
 
-	public static void buyTicket() {
+	public static void buyTicket(MovieGoer goer) throws Exception {
 		// TODO Auto-generated method stub
-		
+		Scanner input = new Scanner(System.in);
+		try {
+			Cinema c= ChooseCinema.chooseCinema();
+					c.listShowingTime();
+			System.out.println("Select a showingtime");
+			ShowingTime s= c.selectShowingTime(input.nextInt());
+			s.printAllTicket();
+			System.out.println("Choose row number");
+			int i = input.nextInt();
+			System.out.println("Choose colum number");
+			int j = input.nextInt();
+			Ticket t=s.getTicket(i, j);
+			t.setBooked(true);
+			History h = new History(goer.getName(),s.getMovie().getTitle(),t.getTID());
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }

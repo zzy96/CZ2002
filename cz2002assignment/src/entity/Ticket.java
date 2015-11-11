@@ -9,6 +9,7 @@ public class Ticket implements Serializable {
 	private double price;
 	private boolean isBooked;
 	private String TID;
+	
 
 	public Ticket(int r, int c, double p, String TicketID) {
 		row = r;

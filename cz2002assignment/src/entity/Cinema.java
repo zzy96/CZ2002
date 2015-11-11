@@ -54,4 +54,10 @@ public class Cinema implements Serializable {
 		}
 		System.out.println("");
 	}
+	public ShowingTime selectShowingTime(int i){
+		if(i-1<showingTime.size()){
+			return showingTime.get(i-1);
+		}
+		throw new IndexOutOfBoundsException("Index " + (i-1) + " is out of bounds!");
+	}
 }
