@@ -12,7 +12,7 @@ public class MovieGoer implements Serializable {
 	private String email;
 	private int age;
 	private ArrayList<Review> reviews;
-	// public ArrayList<History> history;
+	private ArrayList<History> history;
 
 	public MovieGoer() {
 		Scanner input = new Scanner(System.in);
@@ -51,13 +51,22 @@ public class MovieGoer implements Serializable {
 		ChooseMovie.updateMovie(movie);
 		reviews.add(newReview);
 	}
-
+	
 	public void showReview() {
 		System.out.println("All " + this.getName() + "'s Reviews:");
 		for (Review i : reviews) {
 			System.out.println(i.toString());
 		}
 
+	}
+	public void addHistory(History his){
+		this.history.add(his);
+	}
+	public void showHistory(){
+		System.out.println(this.getName()+"'s booking history:");
+		for(History i: history){
+			System.out.println(i.toString());
+		}
 	}
 	// public void addHistory(History his){
 	// this.history.add(his);
