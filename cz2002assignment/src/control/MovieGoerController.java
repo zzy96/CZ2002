@@ -67,6 +67,7 @@ public class MovieGoerController {
 		objectInputStream.close();
 	}
 
+
 	private static void movieGoerMain(MovieGoer goer) throws Exception {
 		Scanner input = new Scanner(System.in);
 		boolean loop = true;
@@ -94,7 +95,7 @@ public class MovieGoerController {
 				buyTicket(goer);
 				break;
 			case 4:
-				goer.showHistory();
+					
 				break;
 			case 5:
 				goer.makeReview();
@@ -172,7 +173,6 @@ public class MovieGoerController {
 
 	public static void buyTicket(MovieGoer goer) throws Exception {
 		// TODO Auto-generated method stub
-<<<<<<< HEAD
 		Scanner input = new Scanner(System.in);
 		try {
 			Cinema c= ChooseCinema.chooseCinema();
@@ -187,14 +187,10 @@ public class MovieGoerController {
 			Ticket t=s.getTicket(i, j);
 			t.setBooked(true);
 			History h = new History(goer.getName(),s.getMovie().getTitle(),t.getTID());
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-=======
-
->>>>>>> origin/master
 	}
-	
-	
 }
