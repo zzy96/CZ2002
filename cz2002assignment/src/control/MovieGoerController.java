@@ -95,7 +95,7 @@ public class MovieGoerController {
 				buyTicket();
 				break;
 			case 4:
-
+				goer.showHistory();
 				break;
 			case 5:
 				goer.makeReview();
@@ -175,4 +175,6 @@ public class MovieGoerController {
 		// TODO Auto-generated method stub
 
 	}
+	
+	
 }
