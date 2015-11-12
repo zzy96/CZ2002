@@ -9,6 +9,11 @@ import java.util.Scanner;
 
 import entity.Cinema;
 
+/**
+ * 
+ * Create cinema. Store cinema information into the Cinema database
+ *
+ */
 public class CreateCinema {
 
 	private static ArrayList<Cinema> cinemas = new ArrayList<Cinema>();

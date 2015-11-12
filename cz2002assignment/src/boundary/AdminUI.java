@@ -7,9 +7,20 @@ import control.ChooseCinema;
 import control.ChooseMovie;
 import control.TicketPriceController;
 
+/**
+ * 
+ * This user interface is used by administrator
+ *
+ */
 public class AdminUI {
 	private static Scanner input = new Scanner(System.in);
 
+	/**
+	 * Check administrator login password
+	 * 
+	 * @return check result
+	 * @throws Exception
+	 */
 	public static boolean checkLogin() throws Exception {
 		System.out.println("input admin password:");
 
@@ -23,6 +34,11 @@ public class AdminUI {
 		}
 	}
 
+	/**
+	 * Main menu of Administrator
+	 * 
+	 * @throws Exception
+	 */
 	private static void adminMain() throws Exception {
 
 		boolean loop = true;

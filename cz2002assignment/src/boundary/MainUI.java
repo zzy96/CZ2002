@@ -2,8 +2,20 @@ package boundary;
 
 import java.util.Scanner;
 
+/**
+ * Movie Booking and Listing Management Application
+ * 
+ * @author CZ2002/BCG2
+ * @author Fu Qiang, Lei Ming, Lu Chenghao, Pan Jiangdong, Zhou Zhiyao
+ * 
+ */
 public class MainUI {
 
+	/**
+	 * Main entry of the program
+	 * 
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception {
 		Scanner input = new Scanner(System.in);
 		int sel = 0;

@@ -6,9 +6,19 @@ import control.ChooseMovie;
 import control.MovieGoerController;
 import entity.MovieGoer;
 
+/**
+ * This user interface class is used by movie goers
+ *
+ */
 public class MovieGoerUI {
+
 	private static Scanner input = new Scanner(System.in);
 
+	/**
+	 * Choose movie goer login type
+	 * 
+	 *
+	 */
 	public static void movieGoerChooseLogin() throws Exception {
 		System.out.println("1. Existing movie goer");
 		System.out.println("2. New movie goer");
@@ -27,6 +37,13 @@ public class MovieGoerUI {
 		}
 	}
 
+	/**
+	 * Main menu of movie goer
+	 * 
+	 * @param goer
+	 *            The login movie goer
+	 * 
+	 */
 	public static void movieGoerMain(MovieGoer goer) throws Exception {
 
 		boolean loop = true;
@@ -51,7 +68,7 @@ public class MovieGoerUI {
 				ChooseMovie.chooseMovie().printInfo();
 				break;
 			case 3:
-				MovieGoerController.buyTicket();
+				MovieGoerController.buyTicket(goer);
 				break;
 			case 4:
 
