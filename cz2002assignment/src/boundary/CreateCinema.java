@@ -35,7 +35,7 @@ public class CreateCinema {
 		String code = input.nextLine();
 		System.out.println("input cinema cineplex:");
 		String cineplex = input.nextLine();
-		System.out.println("input cinema class(1?platinum:gold):");
+		System.out.println("input cinema class(1?large:small):");
 		int cinemaClass = input.nextInt();
 		cinemas.add(new Cinema(code, cineplex, cinemaClass));
 		num++;

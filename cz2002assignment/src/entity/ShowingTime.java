@@ -47,15 +47,10 @@ public class ShowingTime implements Serializable {
 		return this.time;
 	}
 
-	public Ticket getTicket(int i , int j) {
-		try{
-		return ticket[i][j];
-		}catch(Exception e){
-			throw new IndexOutOfBoundsException("Index " + (i-1) + " is out of bounds!");
-		}
-		
+	public Ticket getTicket(int i, int j) {
+		return ticket[i - 1][j - 1];
+
 	}
-	
 
 	public String toString() {
 		return "MOVIE:" + movie.getTitle() + " DATE: " + date + " TIME: " + time;
@@ -65,17 +60,32 @@ public class ShowingTime implements Serializable {
 		int size = ticket.length;
 
 		System.out.print("  ");
-		for (int k = 0; k < size; k++)
-			System.out.print(k + " ");
+		for (int k = 1; k <= size; k++) {
+			if (k == Math.ceil(size / 4) || k == 20 - Math.ceil(size / 4)) {
+				System.out.print("   ");
+			}
+			if (k < 10) {
+				System.out.print("0" + k + " ");
+			} else {
+				System.out.print(k + " ");
+			}
+		}
 		System.out.println();
-		
-		for (int i = 0; i < size; i++) {
-			System.out.print(i + " ");
-			for (int j = 0; j < size; j++) {
-				if (ticket[i][j].getBooked())
-					System.out.print("X ");
+
+		for (int i = 1; i <= size; i++) {
+			if (i < 10) {
+				System.out.print("0" + i + " ");
+			} else {
+				System.out.print(i + " ");
+			}
+			for (int j = 1; j <= size; j++) {
+				if (j == Math.ceil(size / 4) || j == 20 - Math.ceil(size / 4)) {
+					System.out.print("   ");
+				}
+				if (ticket[i - 1][j - 1].getBooked())
+					System.out.print("X  ");
 				else
-					System.out.print("O ");
+					System.out.print("O  ");
 			}
 			System.out.println();
 		}

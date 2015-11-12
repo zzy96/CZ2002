@@ -7,9 +7,14 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-
 import boundary.MovieGoerUI;
-import entity.*;
+import entity.Cinema;
+import entity.History;
+import entity.Movie;
+import entity.MovieGoer;
+import entity.ShowingTime;
+import entity.Ticket;
+
 public class MovieGoerController {
 	public static void movieGoerRegistration() throws Exception {
 
@@ -67,7 +72,6 @@ public class MovieGoerController {
 		objectInputStream.close();
 	}
 
-
 	private static void movieGoerMain(MovieGoer goer) throws Exception {
 		Scanner input = new Scanner(System.in);
 		boolean loop = true;
@@ -82,8 +86,7 @@ public class MovieGoerController {
 			System.out.println("7. List the Top 5 ranking");
 			System.out.println("8. Exit");
 			int option = input.nextInt();
-			if (option == 8)
-				break;
+
 			switch (option) {
 			case 1:
 				ChooseMovie.listMovie();
@@ -93,9 +96,10 @@ public class MovieGoerController {
 				break;
 			case 3:
 				buyTicket(goer);
+				updateMovieGoer(goer);
 				break;
 			case 4:
-					
+				goer.showHistory();
 				break;
 			case 5:
 				goer.makeReview();
@@ -172,25 +176,38 @@ public class MovieGoerController {
 	}
 
 	public static void buyTicket(MovieGoer goer) throws Exception {
-		// TODO Auto-generated method stub
+
 		Scanner input = new Scanner(System.in);
-		try {
-			Cinema c= ChooseCinema.chooseCinema();
-					c.listShowingTime();
-			System.out.println("Select a showingtime");
-			ShowingTime s= c.selectShowingTime(input.nextInt());
-			s.printAllTicket();
-			System.out.println("Choose row number");
-			int i = input.nextInt();
-			System.out.println("Choose colum number");
-			int j = input.nextInt();
-			Ticket t=s.getTicket(i, j);
+		Cinema c = ChooseCinema.chooseCinema();
+		c.listShowingTime();
+		System.out.println("Select a showingtime");
+		ShowingTime s = c.selectShowingTime(input.nextInt());
+		s.printAllTicket();
+
+		System.out.println("Choose row number");
+		int i = input.nextInt();
+		System.out.println("Choose column number");
+		int j = input.nextInt();
+		Ticket t = s.getTicket(i, j);
+
+		if (goer.getAge() <= 12) {
+			System.out.println("Child Price: " + t.getPrice() * TicketPriceController.getDiscount());
+		} else if (goer.getAge() >= 60) {
+			System.out.println("Senior Price: " + t.getPrice() * TicketPriceController.getDiscount());
+		} else {
+			System.out.println("Standard Price: " + t.getPrice());
+		}
+
+		System.out.println("Confirm Booking?");
+		System.out.println("1. Yes");
+		System.out.println("2. No");
+		if (input.nextInt() == 1) {
 			t.setBooked(true);
-			History h = new History(goer.getName(),s.getMovie().getTitle(),t.getTID());
-			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			ChooseCinema.updateCinema(c);
+			System.out.println("booking successful");
+
+			History h = new History(goer.getName(), s.getMovie().getTitle(), t.getTID());
+			goer.addHistory(h);
 		}
 	}
 }

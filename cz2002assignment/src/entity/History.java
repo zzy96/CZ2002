@@ -1,21 +1,19 @@
 package entity;
 
-public class History {
+import java.io.Serializable;
+
+public class History implements Serializable {
 	private String custName;
 	private String movieName;
-	private String trID;
+	private String TID;
 
 	public History(String name, String mName, String TID) {
 		custName = name;
 		movieName = mName;
-		trID = TID;
+		this.TID = TID;
 	}
 
-	public String getCustName() {
-		return custName;
-	}
-
-	public String getMovieName() {
-		return movieName;
+	public String toString() {
+		return custName + " " + movieName + " " + TID;
 	}
 }

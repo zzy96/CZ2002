@@ -26,6 +26,7 @@ public class MovieGoer implements Serializable {
 		System.out.println("input age:");
 		age = input.nextInt();
 		reviews = new ArrayList<Review>();
+		history = new ArrayList<History>();
 	}
 
 	public String getName() {
@@ -51,7 +52,7 @@ public class MovieGoer implements Serializable {
 		ChooseMovie.updateMovie(movie);
 		reviews.add(newReview);
 	}
-	
+
 	public void showReview() {
 		System.out.println("All " + this.getName() + "'s Reviews:");
 		for (Review i : reviews) {
@@ -59,17 +60,16 @@ public class MovieGoer implements Serializable {
 		}
 
 	}
-	public void addHistory(History his){
+
+	public void addHistory(History his) {
 		this.history.add(his);
 	}
-	public void showHistory(){
-		System.out.println(this.getName()+"'s booking history:");
-		for(History i: history){
+
+	public void showHistory() {
+		System.out.println(this.getName() + "'s booking history:");
+		for (History i : history) {
 			System.out.println(i.toString());
 		}
 	}
-	// public void addHistory(History his){
-	// this.history.add(his);
-	// }
 
 }

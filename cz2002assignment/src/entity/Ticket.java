@@ -30,6 +30,10 @@ public class Ticket implements Serializable {
 		isBooked = s;
 	}
 
+	public double getPrice() {
+		return price;
+	}
+
 	public int getSeatRow() {
 		return row + 1;
 	}
