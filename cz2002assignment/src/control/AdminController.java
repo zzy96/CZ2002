@@ -36,7 +36,7 @@ public class AdminController {
 		FileOutputStream fos2 = new FileOutputStream("database/Movie");
 		ObjectOutputStream oos2 = new ObjectOutputStream(fos2);
 		oos2.writeInt(num);
-		for (i = 0; i < num; i++) {
+		for (i = 0; i < num + 1; i++) {
 			if (!(sel == i + 1)) {
 				oos2.writeObject(mList[i]);
 			}
@@ -56,7 +56,6 @@ public class AdminController {
 
 	public static void createMovie() throws Exception {
 		Scanner input = new Scanner(System.in);
-		input.nextLine();
 		FileInputStream fis = new FileInputStream("database/Movie");
 		ObjectInputStream ois = new ObjectInputStream(fis);
 		int num = ois.readInt();
