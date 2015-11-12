@@ -189,6 +189,10 @@ public class MovieGoerController {
 		System.out.println("Choose column number");
 		int j = input.nextInt();
 		Ticket t = s.getTicket(i, j);
+		if (t.getBooked()) {
+			System.out.println("Sear not available!");
+			return;
+		}
 
 		if (goer.getAge() <= 12) {
 			System.out.println("Child Price: " + t.getPrice() * TicketPriceController.getDiscount());
