@@ -209,5 +209,6 @@ public class MovieGoerController {
 			History h = new History(goer.getName(), s.getMovie().getTitle(), t.getTID());
 			goer.addHistory(h);
 		}
+		updateMovieGoer(goer);
 	}
 }

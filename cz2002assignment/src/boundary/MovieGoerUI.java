@@ -71,7 +71,7 @@ public class MovieGoerUI {
 				MovieGoerController.buyTicket(goer);
 				break;
 			case 4:
-
+				goer.showHistory();
 				break;
 			case 5:
 				goer.makeReview();

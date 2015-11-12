@@ -29,8 +29,8 @@ public class ShowingTime implements Serializable {
 		ticket = new Ticket[size][size];
 		for (int i = 0; i < size; i++) {
 			for (int j = 0; j < size; j++) {
-				ticket[i][j] = new Ticket(i, j, price, cinemaCode + date.substring(0, 4) + date.substring(5, 7)
-						+ date.substring(8, 10) + time.substring(0, 2) + time.substring(3, 5));
+				ticket[i][j] = new Ticket(i, j, price, cinemaCode + date.substring(6, 10) + date.substring(3, 5)
+						+ date.substring(0, 2) + time.substring(0, 2) + time.substring(3, 5));
 			}
 		}
 	}
